@@ -89,8 +89,30 @@ function selecionaAluno(aluno){
 }
 
 function registraPresenca(index) { 
+    
     var obj = alunos[index]
-    alert(obj.nome); 
+
+        axios.get(url, {
+            params: {
+                query:'registraPresenca',
+                objeto:JSON.stringify(obj)
+            }
+        })
+        .then((response)=>{
+                console.log(response);
+                var $div = $("<div>", {"class": "col-md-4 col-md-offset-4 jumbotron"});
+                $div.append( "<p><h3> " + response.data.result + "</h3></p>" );
+                $div.append( "<p><h5>Registrado na linha: " + response.data.row + "</h5></p>" );
+                $div.append( "<p><h5>ALUNO: " + response.data.dados[6] + "</h5></p>" );
+                $('#produtos').html($div)
+        })
+        .catch((err)=>{
+            alert('Houve um erro no registro da presença do aluno!!!');
+            console.log(err);
+        })
+
+
+
 }
 
 /* 
