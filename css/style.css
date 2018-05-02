@@ -64,4 +64,19 @@
     opacity: 1;
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) inset;
   }
+
+  #listagem{
+    font-size: 22px;
+    width: 50vw;
+    margin:  50 auto auto 0;
+    padding-top:20px;
+    position: absolute;;
+    color: snow;
+    
+    
+  }
+
+  #listagem a{
+    color:white;
+  }
   

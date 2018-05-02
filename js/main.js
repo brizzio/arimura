@@ -3,6 +3,7 @@ var alunos
 
 $(document).ready(function(){
     console.log('arimura pronto!!!')
+    $ul = $('<ul>', {class: "lista-presenca"})
 
         
     
@@ -104,7 +105,12 @@ function registraPresenca(index) {
                 $div.append( "<p><h3> " + response.data.result + "</h3></p>" );
                 $div.append( "<p><h5>Registrado na linha: " + response.data.row + "</h5></p>" );
                 $div.append( "<p><h5>ALUNO: " + response.data.dados[6] + "</h5></p>" );
+                $div.append( "<p><h5>CODIGO: " + response.data.dados[0] + "</h5></p>" );
                 $('#produtos').html($div)
+
+                var $li = $("<li>", {class: "listagem-item"}).append($("<a>").text(response.data.dados[6]));
+                $ul.append($li)
+                $('#listagem').html($ul)
         })
         .catch((err)=>{
             alert('Houve um erro no registro da presença do aluno!!!');
